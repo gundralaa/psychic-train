@@ -25,16 +25,19 @@ class Memory extends Module {
   // For simulation/verilog, using `VecInit` is better for small ROMs.
   
   val program = VecInit(Seq(
-    "h200001B7".U(32.W), // lui x3, 0x20000
-    "h0041A083".U(32.W), // lw x1, 4(x3)
-    "h0010F093".U(32.W), // andi x1, x1, 1
-    "hFE008CE3".U(32.W), // beq x1, x0, -8
-    "h0001A103".U(32.W), // lw x2, 0(x3)
-    "h0041A083".U(32.W), // lw x1, 4(x3)
-    "h0020F093".U(32.W), // andi x1, x1, 2
-    "hFE008CE3".U(32.W), // beq x1, x0, -8
-    "h0021A023".U(32.W), // sw x2, 0(x3)
-    "hFE1FF06F".U(32.W)  // jal x0, -32
+    "h200001B7".U(32.W),
+    "h00A00093".U(32.W),
+    "h01400113".U(32.W),
+    "h06400293".U(32.W),
+    "h00208233".U(32.W),
+    "hFFF28293".U(32.W),
+    "hFE029CE3".U(32.W),
+    "h0041A303".U(32.W),
+    "h00237313".U(32.W),
+    "hFE030CE3".U(32.W),
+    "h04400393".U(32.W),
+    "h0071A023".U(32.W),
+    "h0000006F".U(32.W)
   ))
   
   // Map IMEM address (byte address) to index (word address)
