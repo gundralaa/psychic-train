@@ -151,3 +151,43 @@ For an NxN systolic array:
 - Data flows through in `2N - 1` cycles
 - Total computation time: `3N - 1` cycles (including drain)
 - Results are valid when `done` signal is asserted
+
+## Fully Homomorphic Encryption (FHE) Accelerator
+
+A hardware accelerator for Fully Homomorphic Encryption based on the TFHE scheme. FHE allows computation on encrypted data without decryption, enabling privacy-preserving computation.
+
+### Overview
+
+FHE is a cryptographic technique that enables:
+- **Encrypted Computation**: Perform arbitrary computations on ciphertext
+- **Privacy Preservation**: Data remains encrypted throughout processing
+- **Secure Outsourcing**: Process sensitive data on untrusted servers
+
+### Structure
+
+```
+src/main/scala/fhe/
+├── ModularArithmetic.scala   # Base modular operations
+├── NTT.scala                 # Number Theoretic Transform
+├── PolynomialUnit.scala      # Polynomial arithmetic
+├── LWE.scala                 # LWE encryption primitives
+├── RLWE.scala                # Ring-LWE operations
+├── HomomorphicGates.scala    # Homomorphic logic gates
+├── Bootstrapping.scala       # Bootstrapping for noise reduction
+├── FHEAccelerator.scala      # Top-level accelerator
+└── README.md                 # Detailed documentation
+```
+
+### How to Run
+
+```bash
+# Full accelerator
+sbt "runMain fhe.FHEAcceleratorMain"
+
+# AXI-Lite wrapper
+sbt "runMain fhe.FHEAcceleratorAXIMain"
+```
+
+### Documentation
+
+For detailed documentation including architecture, mathematical background, configuration parameters, and usage examples, see the [FHE README](src/main/scala/fhe/README.md).
